@@ -1,2 +1,0 @@
-GamesForTheInternet/.vs
-GamesForTheInternet/Library/il2cpp_cache

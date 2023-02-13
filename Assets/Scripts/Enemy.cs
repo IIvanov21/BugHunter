@@ -2,7 +2,7 @@
 using UnityEngine;
 
 
-public class Patrol : MonoBehaviour
+public class Enemy : MonoBehaviour
 {
     [SerializeField] private Transform m_LeftCheck; // A position marking left patrol end point.
     [SerializeField] private Transform  m_RightCheck;//A position marking right patrol end point.
@@ -39,6 +39,8 @@ public class Patrol : MonoBehaviour
     public Transform PlayerObject;
     public Player PlayerIn;
     public LayerMask m_WhatIsPlayer;
+
+
     void Start()
     {
         m_ShotDelay = m_DelayTime;
@@ -51,13 +53,31 @@ public class Patrol : MonoBehaviour
     }
     void Update()
     {
+        Attack();
+
+        Chase();
+
+        Shoot();
+
+        Patrol();
+        
+        
+    }
+
+    void Attack()
+    {
         if (m_CoolDownAttack <= 0 && m_HasBasicAttack)
         {
             Collider2D DamagePlayer = Physics2D.OverlapCircle(m_AttakcPosition.position, m_AttackRange, m_WhatIsPlayer);
-            if(DamagePlayer)PlayerIn.TakeDamage(m_EnemyDamage);
+            if (DamagePlayer) PlayerIn.TakeDamage(m_EnemyDamage);
             m_CoolDownAttack = m_CoolDownTimer;
         }
         else m_CoolDownAttack -= Time.deltaTime;//Restart attack
+    }
+
+    void Chase()
+    {
+        
         if (m_DazedTime <= 0)//Restart enemy movement
         {
             m_EnemySpeed = m_SetEnemySpeed;
@@ -76,22 +96,50 @@ public class Patrol : MonoBehaviour
             if (!m_FacingRight && transform.position.x < PlayerObject.position.x) Flip();
             else if (m_FacingRight && transform.position.x > PlayerObject.position.x) Flip();
             m_AwayFromPatrol = m_AwayTime;
-            m_BackToPosition = true; 
+            m_BackToPosition = true;
 
         }
         else if (Vector2.Distance(transform.position, PlayerObject.position) > stoppingDistance)
         {
             m_PlayerInRange = false;
             m_AwayFromPatrol -= Time.deltaTime;
-            if (m_AwayFromPatrol <= 0 && m_BackToPosition) 
+            if (m_AwayFromPatrol <= 0 && m_BackToPosition)
             {
                 transform.position = m_RightCheck.position;
                 m_BackToPosition = false;
             }
 
         }
+    }
 
-        if (m_HasRangeAttack && m_DazedTime<=0)
+    void Patrol()
+    {
+        if (!m_PlayerInRange)
+        {
+            if (m_FacingRight)
+            {//Move enemy towards right checkpoint
+                transform.position = Vector2.MoveTowards(transform.position, m_RightCheck.position, m_EnemySpeed * Time.deltaTime);
+                if (Vector2.Distance(transform.position, m_RightCheck.position) < m_PositionRadius)
+                {
+                    Flip();
+                }
+            }
+
+            if (!m_FacingRight)
+            {//Move enemy towards left checkpoint
+                transform.position = Vector2.MoveTowards(transform.position, m_LeftCheck.position, m_EnemySpeed * Time.deltaTime);
+                if (Vector2.Distance(transform.position, m_LeftCheck.position) < m_PositionRadius)
+                {
+                    Flip();
+                }
+            }
+        }
+    }
+
+
+    void Shoot()
+    {
+        if (m_HasRangeAttack && m_DazedTime <= 0)
         {
             if (m_ShotDelay <= 0 && Vector2.Distance(transform.position, PlayerObject.position) < shootingDistance)
             {
@@ -102,40 +150,14 @@ public class Patrol : MonoBehaviour
             }
             else m_ShotDelay -= Time.deltaTime;
         }
-
-        if (!m_PlayerInRange)
-        {
-            if ( m_FacingRight)
-            {//Move enemy towards right checkpoint
-                transform.position = Vector2.MoveTowards(transform.position, m_RightCheck.position, m_EnemySpeed * Time.deltaTime);
-                if (Vector2.Distance(transform.position, m_RightCheck.position) < m_PositionRadius)
-                {
-                    Flip();
-                }
-            }
-
-            if ( !m_FacingRight)
-            {//Move enemy towards left checkpoint
-                transform.position = Vector2.MoveTowards(transform.position, m_LeftCheck.position, m_EnemySpeed * Time.deltaTime);
-                if (Vector2.Distance(transform.position, m_LeftCheck.position) < m_PositionRadius)
-                {
-                    Flip();
-                }
-            }
-        }
-        if (m_EnemyHealth <= 0)
-        {
-            Destroy(gameObject);
-            OnDeath();
-        }
     }
-
 
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(m_AttakcPosition.position, m_AttackRange);
     }
+
     private void Flip()
     {
         // Switch the way the player is labelled as facing.
@@ -154,13 +176,18 @@ public class Patrol : MonoBehaviour
         Vector3 knockBackDirection = PlayerObject.position + transform.position;
         if (PlayerObject.position.x < transform.position.x) knockBackDirection = -knockBackDirection;
         m_Rigidbody2D.AddForce(knockBackDirection*m_KnockBackDistance);
+
+        if (m_EnemyHealth <= 0)
+        {
+            OnDeath();
+        }
     }
 
     public void OnDeath()
     {
         SoundManager.PlaySound("enemyDeath");
         m_PassScore.GetComponent<GameLevelManager>().IncreaseScore(m_EnemyScore);
-
+        Destroy(gameObject);
     }
 }
 

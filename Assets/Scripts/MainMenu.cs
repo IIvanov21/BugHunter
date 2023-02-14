@@ -4,7 +4,6 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using TMPro;
 public class MainMenu : MonoBehaviour
 {
     public TMP_Text m_UserName;

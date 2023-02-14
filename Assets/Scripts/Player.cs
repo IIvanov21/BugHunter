@@ -9,7 +9,6 @@ public class Player : MonoBehaviour
     public int m_CurrentHealth;
     public HealthBar m_HealthBar;
     private Transform m_Enemy;
-    private bool m_AttackEnemy = false;
     public Transform m_LevelEnd;//End of level checkpoint
     private const float m_DistanceToEnd=0.5f;
     public GameObject m_LevelEndMenu;
@@ -30,11 +29,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0))
-        {
-            m_AttackEnemy = true;
-        }
-        else m_AttackEnemy = false;
+        
 
         if (m_CurrentHealth <= 0)
         {

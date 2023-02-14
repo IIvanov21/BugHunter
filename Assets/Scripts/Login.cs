@@ -13,7 +13,7 @@ public class Login : MonoBehaviour
     public Button m_PlayButton;
     public TMP_Text m_PlayerNameDisplay;
 
-    public void CallLogin()
+    /*public void CallLogin()
     {
         StartCoroutine(LoginPlayer());
     }
@@ -54,6 +54,6 @@ public class Login : MonoBehaviour
         //Verification for username and password input validation
         m_SubmitButton.interactable = (m_NameField.text.Length >= 8 && m_PasswordField.text.Length >= 8);
 
-    }
+    }*/
 
 }

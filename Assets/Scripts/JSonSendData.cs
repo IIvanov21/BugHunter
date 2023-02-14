@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Networking;
 public class JSonSendData : MonoBehaviour
 {
-    string m_Link = "https://vesta.uclan.ac.uk/~iivanov/BugHunter/php/sendscore.php";
+    /*string m_Link = "https://vesta.uclan.ac.uk/~iivanov/BugHunter/php/sendscore.php";
     string m_Json;
  
     public void CallSavePlayerData()
@@ -45,5 +45,5 @@ public class JSonSendData : MonoBehaviour
 
         if (url.isNetworkError) Debug.Log("Failed to get highscore table");
         else Debug.Log("Sent to database:" + url.downloadHandler.text);
-    }
+    }*/
 }

@@ -30,10 +30,10 @@ public class GameLevelManager : MonoBehaviour
 
     public void CallSaveData()
     {
-        StartCoroutine(SavePlayerData());
+        //StartCoroutine(SavePlayerData());
     }
 
-    IEnumerator SavePlayerData()
+    /*IEnumerator SavePlayerData()
     {
         WWWForm formPlayer = new WWWForm();
         formPlayer.AddField("name", DBManager.m_UserName);
@@ -51,7 +51,7 @@ public class GameLevelManager : MonoBehaviour
             Debug.Log("Save failed. Error#" + www.text);
         }
         
-    }
+    }*/
     //Select the skin through incrementing and decrementing an index between the range of skins 
     public void DecreaseCharacterIndex()
     {

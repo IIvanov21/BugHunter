@@ -6,7 +6,7 @@ using UnityEngine.Networking;
 
 public class JSonWrapper : MonoBehaviour
 {
-    string link = "https://vesta.uclan.ac.uk/~iivanov/BugHunter/php/highscore.php";
+    /*string link = "https://vesta.uclan.ac.uk/~iivanov/BugHunter/php/highscore.php";
 
    
     public void Update()
@@ -35,7 +35,7 @@ public class JSonWrapper : MonoBehaviour
         }
         if (url.isNetworkError) Debug.Log("Failed to get highscore table");
         else Debug.Log("High Score:" + url.downloadHandler.text);
-    }
+    }*/
 
   
 }

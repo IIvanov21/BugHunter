@@ -45,11 +45,9 @@ public class CharacterController2D : MonoBehaviour
 		if(Input.GetKeyDown(KeyCode.Space)) m_JumpTimer = 0.3f;
 		m_JumpTimer -= Time.deltaTime;
 	}
+
 	private void FixedUpdate()
 	{
-		
-		
-
 		// The player is grounded if a circlecast to the groundcheck position hits anything designated as ground
 		// This can be done using layers instead but Sample Assets will not overwrite your project settings.
 		Collider2D[] colliders = Physics2D.OverlapCircleAll(m_GroundCheck.position, k_GroundedRadius, m_WhatIsGround);

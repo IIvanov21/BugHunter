@@ -22,7 +22,7 @@ public class PlayerAttack : MonoBehaviour
                 Collider2D[] DamageEnemy = Physics2D.OverlapCircleAll(m_AttakcPosition.position, m_AttackRange, m_WhatIsEnemy);
                 for (int i=0;i<DamageEnemy.Length;i++)
                 {
-                    if (DamageEnemy[i].tag == "Enemy") DamageEnemy[i].GetComponent<Patrol>().ReduceHealth(m_PlayerDamage);
+                    if (DamageEnemy[i].tag == "Enemy") DamageEnemy[i].GetComponent<Enemy>().ReduceHealth(m_PlayerDamage);
                     if(DamageEnemy[i].tag=="Box")DamageEnemy[i].GetComponent<BoxBreak>().DestroyBox();
                     if (DamageEnemy[i].tag == "Boss") DamageEnemy[i].GetComponent<BossHealth>().ReduceHealth(m_PlayerDamage);
 

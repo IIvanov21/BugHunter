@@ -12,7 +12,7 @@ public class RegisterUser : MonoBehaviour
     public GameObject m_MainMenu;
     public Button m_SubmitButton;
 
-    public void CallRegister()
+    /*public void CallRegister()
     {
         StartCoroutine(Register());
     }
@@ -46,5 +46,5 @@ public class RegisterUser : MonoBehaviour
         //Verification for username and password input validation
         m_SubmitButton.interactable = (m_NameField.text.Length >= 8 && m_PasswordField.text.Length >= 8);
 
-    }
+    }*/
 }

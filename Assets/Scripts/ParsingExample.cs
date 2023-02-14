@@ -6,7 +6,7 @@ using UnityEngine;
 public class WebTest : MonoBehaviour
 {
     // Start is called before the first frame update
-    IEnumerator Start()
+    /*IEnumerator Start()
     {
         WWW request = new WWW("http://localhost/sqlconnect/webtest.php");
         yield return request;
@@ -20,7 +20,7 @@ public class WebTest : MonoBehaviour
        int webNumber= int.Parse(webResults[1]);
         webNumber *= 2;
         Debug.Log(webNumber);
-    }
+    }*/
 
 
    

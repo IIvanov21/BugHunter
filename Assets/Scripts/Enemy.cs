@@ -36,8 +36,6 @@ public class Enemy : MonoBehaviour
     private float m_AwayFromPatrol;
     private const float m_AwayTime = 5.0f;
     public GameObject projecTile;
-    public Transform PlayerObject;
-    public Player PlayerIn;
     public LayerMask m_WhatIsPlayer;
 
 
@@ -69,7 +67,7 @@ public class Enemy : MonoBehaviour
         if (m_CoolDownAttack <= 0 && m_HasBasicAttack)
         {
             Collider2D DamagePlayer = Physics2D.OverlapCircle(m_AttakcPosition.position, m_AttackRange, m_WhatIsPlayer);
-            if (DamagePlayer) PlayerIn.TakeDamage(m_EnemyDamage);
+            if (DamagePlayer) GameManager.Instance.player.GetComponent<Player>().TakeDamage(m_EnemyDamage);
             m_CoolDownAttack = m_CoolDownTimer;
         }
         else m_CoolDownAttack -= Time.deltaTime;//Restart attack
@@ -88,18 +86,18 @@ public class Enemy : MonoBehaviour
             m_DazedTime -= Time.deltaTime;
         }
         //True for right //False for left
-        if (Vector2.Distance(transform.position, PlayerObject.position) < stoppingDistance)
+        if (Vector2.Distance(transform.position, GameManager.Instance.player.transform.position) < stoppingDistance)
         {
             //Move enemy towards player
-            transform.position = Vector2.MoveTowards(transform.position, PlayerObject.position, m_EnemySpeed * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, GameManager.Instance.player.transform.position, m_EnemySpeed * Time.deltaTime);
             m_PlayerInRange = true;
-            if (!m_FacingRight && transform.position.x < PlayerObject.position.x) Flip();
-            else if (m_FacingRight && transform.position.x > PlayerObject.position.x) Flip();
+            if (!m_FacingRight && transform.position.x < GameManager.Instance.player.transform.position.x) Flip();
+            else if (m_FacingRight && transform.position.x > GameManager.Instance.player.transform.position.x) Flip();
             m_AwayFromPatrol = m_AwayTime;
             m_BackToPosition = true;
 
         }
-        else if (Vector2.Distance(transform.position, PlayerObject.position) > stoppingDistance)
+        else if (Vector2.Distance(transform.position, GameManager.Instance.player.transform.position) > stoppingDistance)
         {
             m_PlayerInRange = false;
             m_AwayFromPatrol -= Time.deltaTime;
@@ -141,7 +139,7 @@ public class Enemy : MonoBehaviour
     {
         if (m_HasRangeAttack && m_DazedTime <= 0)
         {
-            if (m_ShotDelay <= 0 && Vector2.Distance(transform.position, PlayerObject.position) < shootingDistance)
+            if (m_ShotDelay <= 0 && Vector2.Distance(transform.position, GameManager.Instance.player.transform.position) < shootingDistance)
             {
                 //Perform enemy attack here
                 Instantiate(projecTile, transform.position, Quaternion.identity);
@@ -173,8 +171,8 @@ public class Enemy : MonoBehaviour
     {
         m_EnemyHealth -= damageIn;
         m_DazedTime = m_DazedTimer;
-        Vector3 knockBackDirection = PlayerObject.position + transform.position;
-        if (PlayerObject.position.x < transform.position.x) knockBackDirection = -knockBackDirection;
+        Vector3 knockBackDirection = GameManager.Instance.player.transform.position + transform.position;
+        if (GameManager.Instance.player.transform.position.x < transform.position.x) knockBackDirection = -knockBackDirection;
         m_Rigidbody2D.AddForce(knockBackDirection*m_KnockBackDistance);
 
         if (m_EnemyHealth <= 0)

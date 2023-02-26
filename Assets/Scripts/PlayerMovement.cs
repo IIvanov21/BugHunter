@@ -14,8 +14,15 @@ public class PlayerMovement : MonoBehaviour
    
     private void Start()
     {
-        m_Animator.SetInteger("PlayerChoice", DBManager.m_PlayerChoice);
+
     }
+
+    public void SetJump()
+    {
+        m_Jump = true;
+        GetComponent<Rigidbody2D>().AddForce(Vector2.right * 20.0f,ForceMode2D.Impulse);
+    }
+
     // Update is called once per frame
     void Update()
     {

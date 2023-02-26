@@ -17,8 +17,8 @@ public class GameLevelManager : MonoBehaviour
     void Awake()
     {
       
-        m_PlayerNameDisplay.text = DBManager.m_UserName;
-        m_ScoreDisplay.text = "Score:" + DBManager.m_Score;
+        /*m_PlayerNameDisplay.text = DBManager.m_UserName;
+        m_ScoreDisplay.text = "Score:" + DBManager.m_Score;*/
         
         m_NextLevel = m_LevelIndex + 1;
     }

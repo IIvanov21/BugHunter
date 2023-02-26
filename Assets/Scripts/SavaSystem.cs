@@ -4,7 +4,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 public static class SaveSystem
 {
-    public static void SavePlayer(Player player)
+    /*public static void SavePlayer(Player player)
     {
         //Creat file to format
         BinaryFormatter mainFormatter = new BinaryFormatter();
@@ -36,5 +36,5 @@ public static class SaveSystem
             Debug.LogError("Save File not found in" + m_Path);
             return null;
         }
-    }
+    }*/
 }

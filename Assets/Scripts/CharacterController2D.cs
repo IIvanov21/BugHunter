@@ -18,31 +18,17 @@ public class CharacterController2D : MonoBehaviour
 	private bool m_FacingRight = true;  // For determining which way the player is currently facing.
 	private Vector3 m_Velocity = Vector3.zero;
 	public bool wasGrounded;
-
-	[Header("Events")]
-	[Space]
-
-	public UnityEvent OnLandEvent;
-
-	[System.Serializable]
-	public class BoolEvent : UnityEvent<bool> { }
-
-	public BoolEvent OnCrouchEvent;
 	private bool m_wasCrouching = false;
 
 	private void Awake()
 	{
 		m_Rigidbody2D = GetComponent<Rigidbody2D>();
 
-		if (OnLandEvent == null)
-			OnLandEvent = new UnityEvent();
-
-		if (OnCrouchEvent == null)
-			OnCrouchEvent = new BoolEvent();
+		
 	}
 	private void Update()
 	{
-		if(Input.GetKeyDown(KeyCode.Space)) m_JumpTimer = 0.3f;
+		//if(state) m_JumpTimer = 0.3f;
 		m_JumpTimer -= Time.deltaTime;
 	}
 
@@ -58,7 +44,6 @@ public class CharacterController2D : MonoBehaviour
 				m_Grounded = true;
 				if (m_JumpTimer <= 0)
 				{
-					OnLandEvent.Invoke();
 						
 				}
 				
@@ -90,7 +75,6 @@ public class CharacterController2D : MonoBehaviour
 				if (!m_wasCrouching)
 				{
 					m_wasCrouching = true;
-					OnCrouchEvent.Invoke(true);
 				}
 
 				// Reduce the speed by the crouchSpeed multiplier
@@ -99,7 +83,8 @@ public class CharacterController2D : MonoBehaviour
 				// Disable one of the colliders when crouching
 				if (m_CrouchDisableCollider != null)
 					m_CrouchDisableCollider.enabled = false;
-			} else
+			} 
+			else
 			{
 				// Enable the collider when not crouching
 				if (m_CrouchDisableCollider != null)
@@ -108,7 +93,6 @@ public class CharacterController2D : MonoBehaviour
 				if (m_wasCrouching)
 				{
 					m_wasCrouching = false;
-					OnCrouchEvent.Invoke(false);
 				}
 			}
 
@@ -150,4 +134,6 @@ public class CharacterController2D : MonoBehaviour
 		theScale.x *= -1;
 		transform.localScale = theScale;
 	}
+
+	
 }

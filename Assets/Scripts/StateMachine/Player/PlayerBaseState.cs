@@ -13,11 +13,11 @@ public abstract class PlayerBaseState : State
 
     protected void Move(Vector2 motion, float deltaTime)
     {
-        stateMachine.Controller.Move(motion.x + stateMachine.ForceReceiver.Movement.x * deltaTime,true,true);
+        stateMachine.Controller.Move(motion.x + stateMachine.ForceReceiver.Movement.x * deltaTime,stateMachine.InputReader.IsCrouching,stateMachine.InputReader.IsJumping);
     }
 
     protected void Move(float deltaTime)
     {
-        stateMachine.Controller.Move(Vector2.zero.x + stateMachine.ForceReceiver.Movement.x * deltaTime,true,true);
+        stateMachine.Controller.Move(Vector2.zero.x + stateMachine.ForceReceiver.Movement.x * deltaTime, stateMachine.InputReader.IsCrouching, stateMachine.InputReader.IsJumping);
     }
 }

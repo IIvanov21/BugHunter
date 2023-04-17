@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Animator))]
 public class PlayerIdleState : PlayerBaseState
 {
     private readonly int IdleHash = Animator.StringToHash("Idle");
@@ -12,19 +11,19 @@ public class PlayerIdleState : PlayerBaseState
 
     public override void Enter()
     {
-        Debug.Log("Entering Idle state!");
         stateMachine.Animator.CrossFadeInFixedTime(IdleHash, CrossFadeDuration);
     }
 
     public override void Tick(float deltaTime)
     {
-        /*if(stateMachine.InputReader.MovementValue.x>0 || stateMachine.InputReader.MovementValue.x<0)
-        {
-            stateMachine.SwitchState(new PlayerMoveState(stateMachine));
-            return;
-        }*/
-        Debug.Log("Input: ");
+        
         Move(stateMachine.Speed * stateMachine.InputReader.MovementValue, deltaTime);
+        Move(deltaTime);
+
+        if (stateMachine.InputReader.IsJumping)
+        {
+            stateMachine.Controller.m_JumpTimer = 0.3f;
+        }
 
     }
 

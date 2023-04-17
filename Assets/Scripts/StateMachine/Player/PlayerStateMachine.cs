@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerStateMachine : StateMachine
+public  class PlayerStateMachine : StateMachine
 {
     [field: SerializeField] public InputReader InputReader { get; private set; }
     [field: SerializeField] public CharacterController2D Controller { get; private set; }
@@ -15,11 +15,5 @@ public class PlayerStateMachine : StateMachine
     void Start()
     {
         SwitchState(new PlayerIdleState(this));
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

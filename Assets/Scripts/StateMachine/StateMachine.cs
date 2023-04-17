@@ -9,7 +9,6 @@ public abstract class StateMachine : MonoBehaviour
     private void Update()
     {
         currentState?.Tick(Time.deltaTime);
-        Debug.Log("Current state is null!");
     }
 
     public void SwitchState(State newState)

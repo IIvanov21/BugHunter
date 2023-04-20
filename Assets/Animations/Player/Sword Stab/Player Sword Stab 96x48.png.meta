@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -117,7 +117,154 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Player Sword Stab 96x48_2
+      rect:
+        serializedVersion: 2
+        x: 226
+        y: 8
+        width: 21
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9999a1af4cd9e24448ebcd71ff97217a
+      internalID: -200565622
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player Sword Stab 96x48_3
+      rect:
+        serializedVersion: 2
+        x: 322
+        y: 8
+        width: 21
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a9ccd65fcd4f26640a7f9e7c760e5195
+      internalID: -2097602951
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player Sword Stab 96x48_5
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 8
+        width: 20
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c12b66b51587d24f9957b6868c78305
+      internalID: 1732438378
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player Sword Stab 96x48_6
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 8
+        width: 20
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e089a93b15354f419096e9ba66c74a0
+      internalID: 1792260672
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player Sword Stab 96x48_7
+      rect:
+        serializedVersion: 2
+        x: 421
+        y: 8
+        width: 52
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3804ee991d7e1a4e82e988bc9be6412
+      internalID: 989325711
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player Sword Stab 96x48_8
+      rect:
+        serializedVersion: 2
+        x: 517
+        y: 8
+        width: 52
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89315c47883cae4408b38a9a72f25f1c
+      internalID: 568524567
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player Sword Stab 96x48_9
+      rect:
+        serializedVersion: 2
+        x: 614
+        y: 8
+        width: 37
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df6c044cc4b6a1f4682f3fa0d3a712ff
+      internalID: 1447151766
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -128,7 +275,17 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Player Sword Stab 96x48_0: -947591271
+      Player Sword Stab 96x48_1: 1692732808
+      Player Sword Stab 96x48_2: -200565622
+      Player Sword Stab 96x48_3: -2097602951
+      Player Sword Stab 96x48_4: 40955486
+      Player Sword Stab 96x48_5: 1732438378
+      Player Sword Stab 96x48_6: 1792260672
+      Player Sword Stab 96x48_7: 989325711
+      Player Sword Stab 96x48_8: 568524567
+      Player Sword Stab 96x48_9: 1447151766
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

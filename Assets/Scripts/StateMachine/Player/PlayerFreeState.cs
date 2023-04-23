@@ -32,18 +32,18 @@ public class PlayerFreeState : PlayerBaseState
             stateMachine.SwitchState(new PlayerAttackState(stateMachine, 0));
             return;
         }
-
-        //Base functionality for moving and while being Idle
-        if(stateMachine.InputReader.MovementValue!=Vector2.zero)
-        {
-            Move(stateMachine.Speed * stateMachine.InputReader.MovementValue, deltaTime);
-        }
-        else Move(deltaTime);
-
+        
         if (stateMachine.InputReader.IsJumping)
         {
-            stateMachine.Controller.m_JumpTimer = 0.3f;
+            stateMachine.SwitchState(new PlayerJumpState(stateMachine));
+            return;
         }
+        //Base functionality for moving and while being Idle
+        
+        Move(stateMachine.Speed * stateMachine.InputReader.MovementValue, deltaTime);
+      
+
+        
 
         UpdateAnimationMovement();
     }

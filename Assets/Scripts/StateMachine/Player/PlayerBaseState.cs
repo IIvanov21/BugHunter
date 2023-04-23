@@ -2,7 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class PlayerBaseState : State
+public interface IPlayerBaseState
+{
+    void Enter();
+    void Tick(float deltaTime);
+    void Exit();
+}
+
+public abstract class PlayerBaseState : State, IPlayerBaseState
 {
     protected PlayerStateMachine stateMachine;
 

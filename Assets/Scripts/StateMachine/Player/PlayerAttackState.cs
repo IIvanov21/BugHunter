@@ -20,7 +20,7 @@ public class PlayerAttackState : PlayerBaseState
     public override void Enter()
     {
         stateMachine.Animator.CrossFadeInFixedTime(attack.AnimationName, CrossFadeDuration);
-        stateMachine.WeaponDamage.SetAttack(attack.Damage, attack.Knockback);
+        //stateMachine.WeaponDamage.SetAttack(attack.Damage, attack.Knockback);
     }
 
     public override void Tick(float deltaTime)
@@ -49,7 +49,6 @@ public class PlayerAttackState : PlayerBaseState
 
     private void TryComboAttack(float normalisedTime)
     {
-        Debug.Log(attack.ComboStateIndex + " " + attack.ComboAttackTime+" : "+normalisedTime);
         
         if (attack.ComboStateIndex == -1) return;
         if (normalisedTime < attack.ComboAttackTime) return;
@@ -60,7 +59,8 @@ public class PlayerAttackState : PlayerBaseState
     private void TryApplyForce()
     {
         if (alreadyAppliedForce) return;
-        stateMachine.ForceReceiver.AddForce(stateMachine.transform.right * attack.Force);
+        if(stateMachine.transform.localScale.x<0)stateMachine.ForceReceiver.AddForce(-stateMachine.transform.right * attack.Force);
+        else stateMachine.ForceReceiver.AddForce(stateMachine.transform.right * attack.Force);
         alreadyAppliedForce = true;
     }
 

@@ -16,7 +16,7 @@ public class ForceReceiver : MonoBehaviour
     private void Update()
     {
         //Gravity Handler
-        if (characterController.wasGrounded && verticalVelocity < 0.0f)
+        if (characterController.isGrounded && verticalVelocity < 0.0f)
         {
             verticalVelocity = Physics.gravity.y * Time.deltaTime;
         }

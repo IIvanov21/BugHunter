@@ -16,6 +16,9 @@ TagManager:
   - room
   - GenerateStartingPos
   - Tiles
+  - Enemy
+  - Projectile
+  - Box
   layers:
   - Default
   - TransparentFX
@@ -62,9 +65,9 @@ TagManager:
   - name: enemy
     uniqueID: 2622988229
     locked: 0
-  - name: player
-    uniqueID: 253552789
-    locked: 0
   - name: bground
     uniqueID: 1111584245
+    locked: 0
+  - name: player
+    uniqueID: 253552789
     locked: 0

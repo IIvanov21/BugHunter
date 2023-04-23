@@ -20,8 +20,8 @@ public class Player : MonoBehaviour
         //if (DBManager.m_PlayerChoice == 0) GetComponent<CircleCollider2D>().radius = 0.103f;
         //if (DBManager.m_PlayerChoice == 1) GetComponent<CircleCollider2D>().radius = 0.086f;
 
-        m_HealthBar.SetMaxHealth(m_Health);
-        m_Enemy = GameObject.FindGameObjectWithTag("Enemy").transform;
+       // m_HealthBar.SetMaxHealth(m_Health);
+        //m_Enemy = GameObject.FindGameObjectWithTag("Enemy").transform;
     }
 
     // Update is called once per frame
